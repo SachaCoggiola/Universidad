@@ -2,7 +2,7 @@ package Universidad.RPA;
 
 import java.util.Scanner;
 
-public class TpN2 {
+public class puntoUno {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el precio base del producto seleccionado");
