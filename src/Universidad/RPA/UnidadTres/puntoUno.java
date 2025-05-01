@@ -6,20 +6,20 @@ public class puntoUno {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el precio del primer producto");
-        int precio = sc.nextInt();
+        int precioBase = sc.nextInt();
         System.out.println("Ingrese el descuento del primer producto");
         int descuento = sc.nextInt();
-        int precioUno = calcularPrecioFinal(precio, descuento);
+        int precioUno = calcularPrecioFinal(precioBase, descuento);
         System.out.println("Ingrese el precio del tercer producto");
-        precio = sc.nextInt();
+        precioBase = sc.nextInt();
         System.out.println("Ingrese el descuento del segundo producto");
         descuento = sc.nextInt();
-        int precioDos = calcularPrecioFinal(precio, descuento);
+        int precioDos = calcularPrecioFinal(precioBase, descuento);
         System.out.println("Ingrese el precio del primer producto");
-        precio = sc.nextInt();
+        precioBase = sc.nextInt();
         System.out.println("Ingrese el descuento del primer producto");
         descuento = sc.nextInt();
-        int precioTres = calcularPrecioFinal(precio, descuento);
+        int precioTres = calcularPrecioFinal(precioBase, descuento);
         System.out.println("El precio final de los productos ingresados es: $" + calcularTotal(precioUno, precioDos, precioTres));
     }
     public static int calcularPrecioFinal(int precio, int descuento){

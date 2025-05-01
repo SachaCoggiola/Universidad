@@ -10,16 +10,13 @@ public class puntoDos {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduzca el radio del primer circulo expresado en milimetros");
         double radio = sc.nextDouble();
-        double perimetro = calcularPerimetro(radio);
-        imprimirPerimetro(perimetro, primero);
+        imprimirPerimetro(calcularPerimetro(radio), primero);
         System.out.println("Introduzca el radio del segundo circulo expresado en milimetros");
         radio = sc.nextDouble();
-        perimetro = calcularPerimetro(radio);
-        imprimirPerimetro(perimetro, segundo);
+        imprimirPerimetro(calcularPerimetro(radio), segundo);
         System.out.println("Introduzca el radio del tercer circulo expresado en milimetros");
         radio = sc.nextDouble();
-        perimetro = calcularPerimetro(radio);
-        imprimirPerimetro(perimetro, tercero);
+        imprimirPerimetro(calcularPerimetro(radio), tercero);
     }
     public static double calcularPerimetro(double radio){
         return radio*2*Math.PI;
