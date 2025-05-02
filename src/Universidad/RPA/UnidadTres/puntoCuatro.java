@@ -1,0 +1,17 @@
+package Universidad.RPA.UnidadTres;
+
+import java.util.Scanner;
+
+public class puntoCuatro {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese la base del triangulo: ");
+        double base = sc.nextDouble();
+        System.out.println("Ingrese la altura del triangulo: ");
+        double altura = sc.nextDouble();
+        System.out.println("La hipotenusa del triangulo ingresado es: "+calcularHipotenusa(base, altura));
+    }
+    public static double calcularHipotenusa(double base, double altura) {
+        return base*base+altura*altura;
+    }
+}
