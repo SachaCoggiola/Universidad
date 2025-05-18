@@ -1,8 +1,8 @@
-package Universidad.RPA.UnidadTres;
+package Universidad.RPA.UnidadTres.ejercicioUno;
 
 import java.util.Scanner;
 
-public class puntoCinco {
+public class puntoE {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduzca la velocidad del objeto en kilometros por hora: ");

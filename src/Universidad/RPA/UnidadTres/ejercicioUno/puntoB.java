@@ -1,8 +1,8 @@
-package Universidad.RPA.UnidadTres;
+package Universidad.RPA.UnidadTres.ejercicioUno;
 
 import java.util.Scanner;
 
-public class puntoDos {
+public class puntoB {
     public static void main(String[] args) {
         String primero = "primero";
         String segundo = "segundo";

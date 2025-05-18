@@ -1,4 +1,4 @@
-package Universidad.RPA;
+package Universidad.RPA.UnidadDos;
 
 import java.util.Scanner;
 
