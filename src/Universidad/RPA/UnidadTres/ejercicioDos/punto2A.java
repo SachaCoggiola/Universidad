@@ -1,9 +1,9 @@
 package Universidad.RPA.UnidadTres.ejercicioDos;
 
 import java.util.Scanner;
-import static Universidad.RPA.UnidadTres.ejercicioUno.modulos.convertirASeg;
+import static Universidad.RPA.modulos.convertirASeg;
 
-public class puntoA {
+public class punto2A {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la hora de despegue del vuelo: ");
