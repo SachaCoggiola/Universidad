@@ -29,4 +29,7 @@ public class modulos {
     public static boolean verificarCero(int numero){return numero==0;}
     public static boolean verificar18(int edad){return edad>17;}
     public static boolean verificarNota(double nota){return nota>5;}
+    public static boolean esMultiplo(int multiplo, int numero){
+        return multiplo % numero == 0;
+    }
 }
