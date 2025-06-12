@@ -32,4 +32,14 @@ public class modulos {
     public static boolean esMultiplo(int multiplo, int numero){
         return multiplo % numero == 0;
     }
+    public static void imprimirNaturales(int numero){
+        for(int i=1; i<=numero; i++){
+            System.out.println(i);
+        }
+    }
+    public static void imprimirParNat(int numero){
+        for(int i=1; i<=numero; i++){
+            System.out.println(i*2);
+        }
+    }
 }
