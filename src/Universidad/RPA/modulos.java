@@ -42,4 +42,32 @@ public class modulos {
             System.out.println(i*2);
         }
     }
+    public static boolean validarContra(String contra) {
+        char caracter;
+        boolean tieneMinuscula = false;
+        boolean tieneMayuscula = false;
+        boolean tieneSimbolo = false;
+        if (contra.length() < 8) {
+            System.out.println("La contraseña es demasiado corta, intente nuevamente y recuerde utilizar más de 8 caracteres.");
+            return false;
+        } else if (contra.length() > 12) {
+            System.out.println("La contraseña es demasiado larga, intente nuevamente y recuerde utilizar menos 12 caracteres.");
+            return false;
+        }
+        if(contra.contains(" ")){
+            System.out.println("La contraseña no debe contener espacios en blanco, intente nuevamente.");
+            return false;
+        }
+        for (int i = 0; i < contra.length(); i++) {
+            caracter = contra.charAt(i);
+            if (Character.isLowerCase(caracter)){
+                tieneMinuscula = true;
+            }else if(Character.isUpperCase(caracter)){
+                tieneMayuscula = true;
+            }else if(!Character.isLetterOrDigit(caracter)){
+                tieneSimbolo = true;
+            }
+        }
+        return tieneMinuscula && tieneMayuscula && tieneSimbolo;
+    }
 }
