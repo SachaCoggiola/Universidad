@@ -16,7 +16,7 @@ public class tpFinal {
         do {
             cantRonda++;
             System.out.println("Ha comenzado la ronda N°"+cantRonda);
-            for (int i = 0; i < 2; i++) {//modularizar el turno? no cambia nada solo queda mas lindo
+            for (int i = 0; i < 2; i++) {//modularizar el turno? no cambia nada solo queda mas lindo?
                 if(turno){
                     System.out.println("Es turno del jugador "+jugadorUno);
                 }else{
