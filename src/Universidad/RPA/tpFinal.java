@@ -7,7 +7,7 @@ public class tpFinal {
         Scanner sc = new Scanner(System.in);
         String jugadorUno, jugadorDos;
         double puntajeUno = 0, puntajeDos = 0, maxPuntUno = 0, maxPuntDos = 0;
-        int cantRonda = 0, valorCarta , rondaJugUno = 1, rondaJugDos = 1;
+        int cantRonda = 0, rondaJugUno = 1, rondaJugDos = 1;
         System.out.println("Ingrese el nombre del jugador N°1:");
         jugadorUno = sc.nextLine();
         System.out.println("Ingrese el nombre del jugador N°2:");
@@ -15,10 +15,8 @@ public class tpFinal {
         do {
             cantRonda++;
             System.out.println("Ha comenzado la ronda N°"+cantRonda);
-            System.out.println("Es turno del jugador "+jugadorUno);
-            puntajeUno += turno(0);
-            System.out.println("Es turno del jugador "+jugadorDos);
-            puntajeDos += turno(0);
+            puntajeUno += turno(jugadorUno);
+            puntajeDos += turno(jugadorDos);
             if (maxPuntUno < puntajeUno) { //modularizar? para que no quede feo
                 maxPuntUno = puntajeUno;
                 rondaJugUno = cantRonda;
@@ -52,19 +50,22 @@ public class tpFinal {
     }
     public static double calcularPuntaje(int valorCarta){
         if(valorCarta == 1 || valorCarta == 12) {
-            return 0;
+            valorCarta = 0;
         }else if(esPar(valorCarta)){
-            return (double) valorCarta * 2;
+            valorCarta *= 2;
         }else{
-            return (double) valorCarta / 2;
+            valorCarta /= 2;
         }
+        return valorCarta;
     }
     public static boolean esPar(int valorCarta){
         return valorCarta % 2 == 0;
     }
-    public static double turno(int valorCarta){
+    public static double turno(String nombre){
         double puntaje = 0;
+        int valorCarta;
         Scanner sc = new Scanner(System.in);
+        System.out.println("Es el turno del jugador "+nombre);
         do {
             System.out.println("Ingrese el valor de la carta:");
             valorCarta = sc.nextInt();
