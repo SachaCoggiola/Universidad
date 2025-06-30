@@ -6,7 +6,7 @@ public class tpFinal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String jugadorUno, jugadorDos;
-        double puntajeUno = 0, puntajeDos = 0, maxPuntUno = 0, maxPuntDos = 0;
+        double puntajeUno = 0, puntajeDos = 0, maxPuntUno = 0, maxPuntDos = 0, puntajeRonda;
         int cantRonda = 0, rondaJugUno = 1, rondaJugDos = 1;
         System.out.println("Ingrese el nombre del jugador N°1:");
         jugadorUno = sc.nextLine();
@@ -15,13 +15,15 @@ public class tpFinal {
         do {
             cantRonda++;
             System.out.println("Ha comenzado la ronda N°"+cantRonda);
-            puntajeUno += turno(jugadorUno);
-            puntajeDos += turno(jugadorDos);
-            if (maxPuntUno < puntajeUno) { //modularizar? para que no quede feo
-                maxPuntUno = puntajeUno;
+            puntajeRonda = turno(jugadorUno);//turno jugador 1
+            puntajeUno += puntajeRonda;
+            if(maxPuntUno > puntajeRonda){
+                maxPuntUno = puntajeRonda;
                 rondaJugUno = cantRonda;
             }
-            if (maxPuntDos < puntajeDos) {
+            puntajeRonda = turno(jugadorDos);//turno jugador 2
+            puntajeDos += puntajeRonda;
+            if(maxPuntDos > puntajeRonda){
                 maxPuntDos = puntajeDos;
                 rondaJugDos = cantRonda;
             }
