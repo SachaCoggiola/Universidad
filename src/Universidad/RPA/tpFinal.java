@@ -17,13 +17,13 @@ public class tpFinal {
             System.out.println("Ha comenzado la ronda N°"+cantRonda);
             puntajeRonda = turno(jugadorUno);//turno jugador 1
             puntajeUno += puntajeRonda;
-            if(maxPuntUno > puntajeRonda){
+            if(maxPuntUno < puntajeRonda){
                 maxPuntUno = puntajeRonda;
                 rondaJugUno = cantRonda;
             }
             puntajeRonda = turno(jugadorDos);//turno jugador 2
             puntajeDos += puntajeRonda;
-            if(maxPuntDos > puntajeRonda){
+            if(maxPuntDos < puntajeRonda){
                 maxPuntDos = puntajeDos;
                 rondaJugDos = cantRonda;
             }
