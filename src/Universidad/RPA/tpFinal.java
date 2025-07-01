@@ -24,7 +24,7 @@ public class tpFinal {
             puntajeRonda = turno(jugadorDos);//turno jugador 2
             puntajeDos += puntajeRonda;
             if(maxPuntDos < puntajeRonda){
-                maxPuntDos = puntajeDos;
+                maxPuntDos = puntajeRonda;
                 rondaJugDos = cantRonda;
             }
         }while(puntajeUno < 60 && puntajeDos < 60);
@@ -34,12 +34,12 @@ public class tpFinal {
             System.out.println("El jugador "+jugadorUno+" ha logrado "+maxPuntUno+" puntos en la ronda numero "+rondaJugUno);
             System.out.println("El jugador " +jugadorDos+" ha logrado "+maxPuntDos+" puntos en la ronda numero "+rondaJugDos);
         } else if (puntajeUno < puntajeDos) {
-            System.out.println("El jugador "+jugadorDos+" ha ganado");
-            System.out.println(jugadorDos+" ha hecho "+puntajeDos+" puntos.");
+            System.out.println("El jugador "+jugadorDos+" ha ganado, se jugaron "+cantRonda+" rondas.");
+            System.out.println("El jugador "+jugadorDos+" ha hecho "+puntajeDos+" puntos.");
             System.out.println("El jugador " +jugadorDos+" ha logrado "+maxPuntDos+" puntos en la ronda numero "+rondaJugDos);
         }else{
-            System.out.println("El jugador "+jugadorUno+" ha ganado");
-            System.out.println(jugadorUno+" ha hecho "+puntajeUno+" puntos.");
+            System.out.println("El jugador "+jugadorUno+" ha ganado, se jugaron "+cantRonda+" rondas.");
+            System.out.println("El jugador "+jugadorUno+" ha hecho "+puntajeUno+" puntos.");
             System.out.println("El jugador "+jugadorUno+" ha logrado "+maxPuntUno+" puntos en la ronda numero "+rondaJugUno);
         }
     }
@@ -51,14 +51,15 @@ public class tpFinal {
         return valorCarta;
     }
     public static double calcularPuntaje(int valorCarta){
+        double puntaje;
         if(valorCarta == 1 || valorCarta == 12) {
-            valorCarta = 0;
+            puntaje = 0;
         }else if(esPar(valorCarta)){
-            valorCarta *= 2;
+            puntaje = valorCarta * 2;
         }else{
-            valorCarta /= 2;
+            puntaje = (double) valorCarta / 2;
         }
-        return valorCarta;
+        return puntaje;
     }
     public static boolean esPar(int valorCarta){
         return valorCarta % 2 == 0;
