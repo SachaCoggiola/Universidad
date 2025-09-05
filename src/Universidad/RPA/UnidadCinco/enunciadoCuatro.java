@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class enunciadoCuatro {
     public static void main(String[] args) {
-        int i = 0;
+      /*  int i = 0;
         int num;
         int max = 0;
         Scanner sc = new Scanner(System.in);
@@ -15,6 +15,14 @@ public class enunciadoCuatro {
                 max = num;
             }
         }while(num != 0);
-        System.out.println("El mayor númnero ingresado es: "+max);
+        System.out.println("El mayor númnero ingresado es: "+max);*/
+        int i;
+        i = 9;
+        if(i==10)
+            System.out.println(i);
+
+
+        System.out.println("messi");
+
     }
 }

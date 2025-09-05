@@ -2,7 +2,7 @@ package Universidad.RPA;
 
 import java.util.Scanner;
 
-public class tpFinal {
+public class tpFinalRPA {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String jugadorUno, jugadorDos;
@@ -15,6 +15,8 @@ public class tpFinal {
         do {
             cantRonda++;
             System.out.println("Ha comenzado la ronda N°"+cantRonda);
+            System.out.println("Puntaje de "+jugadorUno+" en la ronda Nº"+(cantRonda-1)+": "+puntajeUno);
+            System.out.println("Puntaje de "+jugadorDos+" en la ronda Nº"+(cantRonda-1)+": "+puntajeDos);
             puntajeRonda = turno(jugadorUno);//turno jugador 1
             puntajeUno += puntajeRonda;
             if(maxPuntUno < puntajeRonda){
@@ -37,12 +39,19 @@ public class tpFinal {
             System.out.println("El jugador "+jugadorDos+" ha ganado, se jugaron "+cantRonda+" rondas.");
             System.out.println("El jugador "+jugadorDos+" ha hecho "+puntajeDos+" puntos.");
             System.out.println("El jugador " +jugadorDos+" ha logrado "+maxPuntDos+" puntos en la ronda numero "+rondaJugDos);
+            //Perdedor
+            System.out.println("El jugador "+jugadorUno+" ha hecho "+puntajeUno+" puntos.");
+            System.out.println("El jugador "+jugadorUno+" ha logrado "+maxPuntUno+" puntos en la ronda numero "+rondaJugUno);
         }else{
             System.out.println("El jugador "+jugadorUno+" ha ganado, se jugaron "+cantRonda+" rondas.");
             System.out.println("El jugador "+jugadorUno+" ha hecho "+puntajeUno+" puntos.");
             System.out.println("El jugador "+jugadorUno+" ha logrado "+maxPuntUno+" puntos en la ronda numero "+rondaJugUno);
+            //Perdedor
+            System.out.println("El jugador "+jugadorDos+" ha hecho "+puntajeDos+" puntos.");
+            System.out.println("El jugador " +jugadorDos+" ha logrado "+maxPuntDos+" puntos en la ronda numero "+rondaJugDos);
         }
     }
+
 
     public static int verificarCarta(int valorCarta){
         if(valorCarta < 1||valorCarta > 12) {
@@ -78,3 +87,4 @@ public class tpFinal {
         return puntaje;
     }
 }
+
