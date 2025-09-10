@@ -36,4 +36,20 @@ public class Modulos {
             System.out.println();
         }
     }
+    public static int promedioArray(int[] array){
+        int total=0;
+        for (int j : array) total += j;
+        total/=array.length;
+        return total;
+    }
+    public static boolean verificarLetra(char letra){
+        return letra > 64 && letra < 91 || letra > 96 && letra < 123;
+    }
+    public static char[] cargarArray(char[] array,Scanner sc){
+        for(int i=0; i<array.length; i++){
+            System.out.println("Ingrese el caracter de la posicion "+(i+1));
+            array[i] = sc.next().charAt(0);
+        }
+        return array;
+    }
 }
