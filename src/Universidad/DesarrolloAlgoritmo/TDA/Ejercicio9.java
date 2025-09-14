@@ -15,5 +15,6 @@ public class Ejercicio9 {
             System.out.println("El caracter se encuentra en el arreglo.");
         }
         System.out.println("El caracter se repite unas "+cantidadCaracteres(array,caracter)+" cantidad de veces.");
+
     }
 }

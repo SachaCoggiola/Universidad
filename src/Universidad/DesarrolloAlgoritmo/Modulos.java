@@ -12,6 +12,11 @@ public class Modulos {
         for (int j : array)
             System.out.print(j + " ");
     }
+    public static void imprimirArray(char[] array){
+        for(char c : array) {
+            System.out.print(c + " ");
+        }
+    }
     public static void imprimirArrayFilacCaracter(char[] array){
         for (char c : array)
             System.out.print(c);
@@ -58,6 +63,12 @@ public class Modulos {
             array[i] = sc.nextLine();
         }
     }
+    public static void cargarArray(int[] array, Scanner sc){
+        for(int i=0; i<array.length; i++){
+            System.out.println("Ingrese el numero de la posicion "+(i+1));
+            array[i] = sc.nextInt();
+        }
+    }
     public static String generarCadena(String[] array){
         StringBuilder cadena = new StringBuilder();
         for (String s : array) {
@@ -92,5 +103,58 @@ public class Modulos {
             }
         }
         return cantidad;
+    }
+    public static void invertirArray(int[] array){
+        int temp;
+        for (int i=0; i<array.length/2; i++){
+            temp = array[i];
+            array[i]=array[array.length-1-i];
+            array[array.length-1-i]=temp;
+        }
+    }
+    public static boolean compararArray(int[] array1, int[] array2){
+        boolean verificado = true;
+        int i = 0;
+        if(array1.length!=array2.length){
+            verificado = false;
+        }
+        while(i < array1.length && verificado){
+            if(array1[i]!=array2[i]){
+                verificado = false;
+            }
+            i++;
+        }
+        return verificado;
+    }
+    public static char[] copiarArray(char[] array1){
+        char[] array = new char[array1.length];
+        for (int i=0; i<array1.length; i++){
+            array[i]=array1[i];
+        }
+        return array;
+    }
+    public static boolean validarNumero(int numero,int minimo,int maximo){
+        if(minimo>maximo)
+            throw new RuntimeException("El maximo debe de ser mayor al minimo.");
+        return numero>=minimo && numero<=maximo;
+    }
+    public static char[] soloVocalesArray(char[] array){
+        char[] arrayVocales;
+        int contador = 0;
+        int j = 0;
+        String vocales = "aeiouAEIOU";
+        for (char c : array) {
+            if (vocales.indexOf(c) != -1) {
+                contador++;
+            }
+        }
+        arrayVocales = new char[contador];
+        for (char c : array) {
+            if (vocales.indexOf(c) != -1) {
+                arrayVocales[j] = c;
+                j++;
+            }
+        }
+        return arrayVocales;
     }
 }
