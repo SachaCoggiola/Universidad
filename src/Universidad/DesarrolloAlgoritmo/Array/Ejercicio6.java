@@ -1,4 +1,4 @@
-package Universidad.DesarrolloAlgoritmo;
+package Universidad.DesarrolloAlgoritmo.Array;
 import static Universidad.DesarrolloAlgoritmo.Modulos.*;
 import java.util.Scanner;
 

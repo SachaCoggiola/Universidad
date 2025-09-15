@@ -1,4 +1,4 @@
-package Universidad.DesarrolloAlgoritmo.TDA;
+package Universidad.DesarrolloAlgoritmo.Array;
 import java.util.Scanner;
 import static Universidad.DesarrolloAlgoritmo.Modulos.*;
 

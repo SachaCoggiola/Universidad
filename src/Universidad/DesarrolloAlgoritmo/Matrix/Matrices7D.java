@@ -1,4 +1,4 @@
-package Universidad.DesarrolloAlgoritmo;
+package Universidad.DesarrolloAlgoritmo.Matrix;
 import static Universidad.DesarrolloAlgoritmo.Modulos.*;
 
 public class Matrices7D {

@@ -1,6 +1,7 @@
-package Universidad.DesarrolloAlgoritmo;
+package Universidad.DesarrolloAlgoritmo.Array;
+import Universidad.DesarrolloAlgoritmo.Modulos;
+
 import java.util.Scanner;
-import static Universidad.DesarrolloAlgoritmo.Modulos.*;
 
 public class Ejercicio2 {
     public static void main(String[] args) {
@@ -12,6 +13,6 @@ public class Ejercicio2 {
         int[] array = new int[largo];
         for (int i = 0; i < largo; i++)
             array[i] = entero * (i+1);
-        imprimirArrayEntero(array);
+        Modulos.imprimirArray(array);
     }
 }

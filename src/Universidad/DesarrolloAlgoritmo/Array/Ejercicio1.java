@@ -1,4 +1,4 @@
-package Universidad.DesarrolloAlgoritmo;
+package Universidad.DesarrolloAlgoritmo.Array;
 import java.util.Scanner;
 import static Universidad.DesarrolloAlgoritmo.Modulos.*;
 
@@ -14,6 +14,6 @@ public class Ejercicio1 {
         if(sc.nextLine().equals("R")){
             imprimirArrayReves(array);
         }else
-            imprimirArrayFilacCaracter(array);
+            imprimirArrayFilasCaracter(array);
     }
 }

@@ -8,7 +8,7 @@ public class Modulos {
             array[i] = sc.next().charAt(0);
         }
     }
-    public static void imprimirArrayEntero(int[] array){
+    public static void imprimirArray(int[] array){
         for (int j : array)
             System.out.print(j + " ");
     }
@@ -17,7 +17,15 @@ public class Modulos {
             System.out.print(c + " ");
         }
     }
-    public static void imprimirArrayFilacCaracter(char[] array){
+    public static void imprimirArray(double[] array){
+        for (double v : array)
+            System.out.print(v + " ");
+    }
+    public static void imprimirArray(String[] array){
+        for(String v : array)
+            System.out.print(v + " ");
+    }
+    public static void imprimirArrayFilasCaracter(char[] array){
         for (char c : array)
             System.out.print(c);
     }
@@ -138,17 +146,22 @@ public class Modulos {
             throw new RuntimeException("El maximo debe de ser mayor al minimo.");
         return numero>=minimo && numero<=maximo;
     }
+    public static boolean validarMinimo(int numero,int minimo){
+        if(numero<minimo)
+            throw new RuntimeException("El numero debe ser mayor al minimo.");
+        return true;
+    }
+    public static boolean validarMaximo(int numero,int maximo){
+        if(numero>maximo)
+            throw new RuntimeException("El numero debe ser menor al maximo.");
+        return true;
+    }
     public static char[] soloVocalesArray(char[] array){
         char[] arrayVocales;
-        int contador = 0;
+        int largo = contarVocales(array);
         int j = 0;
         String vocales = "aeiouAEIOU";
-        for (char c : array) {
-            if (vocales.indexOf(c) != -1) {
-                contador++;
-            }
-        }
-        arrayVocales = new char[contador];
+        arrayVocales = new char[largo];
         for (char c : array) {
             if (vocales.indexOf(c) != -1) {
                 arrayVocales[j] = c;
@@ -156,5 +169,28 @@ public class Modulos {
             }
         }
         return arrayVocales;
+    }
+    public static int contarVocales(char[] array){
+        int contador = 0;
+        String vocales = "aeiouAEIOU";
+        for (char c : array) {
+            if (vocales.indexOf(c) != -1) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+    public static void dividirArray(String[] array, String[] arrayPar, String[] arrayImpar){
+        int j = 0;
+        int k = 0;
+        for(int i=0; i<array.length; i++){
+            if(i%2==0){
+                arrayPar[j]=array[i];
+                j++;
+            }else {
+                arrayImpar[k]=array[i];
+                k++;
+            }
+        }
     }
 }

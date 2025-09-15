@@ -1,6 +1,7 @@
-package Universidad.DesarrolloAlgoritmo;
+package Universidad.DesarrolloAlgoritmo.Array;
+import Universidad.DesarrolloAlgoritmo.Modulos;
+
 import java.util.Scanner;
-import static Universidad.DesarrolloAlgoritmo.Modulos.*;
 
 public class Ejercicio3 {
     public static void main(String[] args) {
@@ -22,6 +23,6 @@ public class Ejercicio3 {
             if(i%2==0)
                 array[i] = numero;
         }
-        imprimirArrayEntero(array);
+        Modulos.imprimirArray(array);
     }
 }
