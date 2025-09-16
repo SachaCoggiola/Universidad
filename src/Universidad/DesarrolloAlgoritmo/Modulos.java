@@ -57,12 +57,11 @@ public class Modulos {
     public static boolean verificarLetra(char letra){
         return letra > 64 && letra < 91 || letra > 96 && letra < 123;
     }
-    public static char[] cargarArray(char[] array,Scanner sc){
+    public static void cargarArray(char[] array, Scanner sc){
         for(int i=0; i<array.length; i++){
             System.out.println("Ingrese el caracter de la posicion "+(i+1));
             array[i] = sc.next().charAt(0);
         }
-        return array;
     }
     public static void cargarArray(String[] array, Scanner sc){
         sc.nextLine();
@@ -75,6 +74,12 @@ public class Modulos {
         for(int i=0; i<array.length; i++){
             System.out.println("Ingrese el numero de la posicion "+(i+1));
             array[i] = sc.nextInt();
+        }
+    }
+    public static void cargarArray(double[] array, Scanner sc){
+        for(int i=0; i<array.length; i++){
+            System.out.println("Ingrese el numero de la posicion "+(i+1));
+            array[i] = sc.nextDouble();
         }
     }
     public static String generarCadena(String[] array){
