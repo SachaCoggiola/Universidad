@@ -1,4 +1,5 @@
 package Universidad.DesarrolloAlgoritmo.TDA;
+import java.time.LocalDate;
 
 public class Fecha {
     private int day;
@@ -29,6 +30,16 @@ public class Fecha {
     public int getYear() { return year; }
     public void setYear(int year) { this.year = year; }
     // Propios
+    public int calcularEdad(){
+        // Obtener la fecha actual del sistema
+        LocalDate hoy = LocalDate.now();
+        int edad = hoy.getYear() - this.year;
+        // Si aún no cumplió años en este año, le resto 1
+        if (hoy.getMonthValue() < this.month || (hoy.getMonthValue() == this.month && hoy.getDayOfMonth() < this.day)) {
+            edad--;
+        }
+        return edad;
+    }
     public int diasTranscurridos() {
         int dias = this.day;
         for (int i = 1; i < this.month; i++) {
