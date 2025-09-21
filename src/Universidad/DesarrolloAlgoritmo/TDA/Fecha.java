@@ -40,6 +40,7 @@ public class Fecha {
         }
         return edad;
     }
+    // Se calcula la cantidad de dias que transcurrieron en el año actual
     public int diasTranscurridos() {
         int dias = this.day;
         for (int i = 1; i < this.month; i++) {
@@ -50,40 +51,45 @@ public class Fecha {
         }
         return dias;
     }
-    // Verifica si la fecha es anterior a otra
+    // Verifica si la fecha es anterior a otra ingresada
     public boolean esFechaAnterior(Fecha miFecha) {
-        if (this.year < miFecha.year) return true;
-        if (this.year > miFecha.year) return false;
-        if (this.month < miFecha.month) return true;
-        if (this.month > miFecha.month) return false;
-        return this.day < miFecha.day;
+        boolean verificado = false;
+        if (this.year < miFecha.year){
+            verificado = true;
+        } else if (this.month < miFecha.month){
+            verificado = true;
+        } else if (this.day < miFecha.day) {
+            verificado = true;
+        }
+        return verificado;
     }
+    // Calcula cual sera la fecha dentro de una cantidad de dias ingresados
     public void calcularFecha(int cantidadDias) {
-        while (cantidadDias > 0) {
+        while (cantidadDias > 0) { // Se van sumando los dias de uno en uno a la fecha
             int limiteMes = (this.month == 2 && esBisiesto(this.year)) ? 29 : DIAS_MES[this.month];
-            if (this.day < limiteMes) {
+            if (this.day < limiteMes) { // Si todavia no se llega a fin de mes se aumente el dia de la fecha
                 this.day++;
             } else {
-                this.day = 1;
-                if (this.month == 12) {
+                this.day = 1;           // Si era el ultimo dia del mes, se reinicia los dias de la fecha al primero
+                if (this.month == 12) { // Se considera si es año nuevo, se aumenta el año y se reinicia a uno el mes
                     this.month = 1;
                     this.year++;
                 } else {
-                    this.month++;
+                    this.month++;       // Si no es diciembre se aumenta en uno el mes
                 }
             }
-            cantidadDias--;
+            cantidadDias--; // Se actulizan la cantidad de dias ingresados
         }
     }
     public boolean esBisiesto() {
-        return esBisiesto(this.year);
+        return esBisiesto(this.year);   // Metodo propio de la clase
     }
-    //metodo static auxiliar para utilizar dentro de otros metodos propios de la clase
+    // Metodo static auxiliar para utilizar dentro de otros metodos propios de la clase
     private static boolean esBisiesto(int year) {
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
     @Override
-    public String toString() {
-        return String.format("%02d/%02d/%04d", day, month, year);
+    public String toString() {  // Se utiliza un formato tal que las fechas queden con la forma xx/xx/xxxx sin faltante de digitos. Ej: dia=9, mes=2 y año=2025 queda 09/02/2025
+        return String.format("%02d/%02d/%04d", day, month, year); // Se utiliza el @Override para eliminar cualquier otro formato anterior que hubiera
     }
 }
