@@ -2,20 +2,20 @@ package Universidad.DesarrolloAlgoritmo.TDA;
 
 public class Turno {
     private final String dia;
-    private final String hora;
+    private final int hora;
     private final Paciente paciente;
     private String diagnostico;
     private boolean asistio;
     private boolean finalizo;
     private int diasTratamiento;
     private double montoCoseg;
-    public Turno(String dia, String hora, int dni, String nombre, String apellido, String obraSocial) {
+    public Turno(String dia, int hora, int dni, String nombre, String apellido, String obraSocial) {
         this.dia = dia;
         this.hora = hora;
         this.paciente = new Paciente(dni, nombre, apellido, obraSocial);
     }
 
-    public Turno(String dia, String hora, int dni, String nombre, String apellido, String obraSocial, String diagnostico, boolean asistio, boolean finalizo, int diasTratamiento, double montoCoseg){
+    public Turno(String dia, int hora, int dni, String nombre, String apellido, String obraSocial, String diagnostico, boolean asistio, boolean finalizo, int diasTratamiento, double montoCoseg){
         this.dia = dia;
         this.hora = hora;
         this.paciente = new Paciente(dni, nombre, apellido, obraSocial);
@@ -28,7 +28,7 @@ public class Turno {
     public String getDia() {
         return dia;
     }
-    public String getHora() {
+    public int getHora() {
         return hora;
     }
     public Paciente getPaciente() {
@@ -69,7 +69,7 @@ public class Turno {
         this.montoCoseg = montoCoseg;
     }
     public boolean equals(Turno turno) {
-        return this.dia.equals(turno.getDia())&&this.hora.equals(turno.getHora());
+        return this.dia.equals(turno.getDia())&&this.hora==(turno.getHora());
     }
     public boolean equalsPaciente(Turno turno) {
         return this.paciente.equals(turno.getPaciente());

@@ -8,10 +8,10 @@ public class SimulacroParcial12025 {
     }
     public static void cargarTurno(Turno[][] turnos){
         Scanner sc = new Scanner(System.in);
-        String dia, nombre, apellido, obraSocial, diagnostico,hora;
+        String dia, nombre, apellido, obraSocial, diagnostico;
         double montoCoseg;
         boolean asistio, finalizo;
-        int dni, diasTratamiento, fila, columna;
+        int dni, diasTratamiento, fila, columna, hora, min;
         do {
             System.out.println("Ingrese el dia del turno: ");
             dia = sc.nextLine();
@@ -21,8 +21,11 @@ public class SimulacroParcial12025 {
         }while(columna == -1);
         do {
             System.out.println("Ingrese la hora del turno: "); //Usar LocalTime.of(int hora, int min) y cambiar modulo "obtenerHora"
-            hora = sc.nextLine();
-            fila=obtenerHora(hora);
+            hora = sc.nextInt();
+            System.out.println("Ingrese el minuto del turno: ");
+            min = sc.nextInt();
+            sc.nextLine();
+            fila=obtenerHora(hora,min);
             if(fila == -1)
                 System.out.println("La hora ingresada es invalida. Por favor intente de nuevo.");
         }while(fila==-1);
@@ -52,26 +55,21 @@ public class SimulacroParcial12025 {
         }
         return dias;
     }
-    public static int obtenerHora(String hora){ //Cambiar parametros, obtenerHora(int hora, int min)
+    public static int obtenerHora(int hora, int min){
         int fila=-1;
-        switch (hora.toLowerCase()) {  //Cambiar condicion del switch por hora
-            case "09:00" -> fila = 0;  //Hacer un if al final por si los minutos son 30
-            case "09:30" -> fila = 1;  //Ej: hora = 10 y min = 30
-            case "10:00" -> fila = 2;  //case 10 -> fila=2;
-            case "10:30" -> fila = 3;  //if(min==30){fila++;} solo aumenta en uno si los minutos son 30 que implica otro turno y por ende otra fila.
-            case "11:00" -> fila = 4;  //return fila;
-            case "11:30" -> fila = 5;
-            case "12:00" -> fila = 6;
-            case "12:30" -> fila = 7;
-            case "13:00" -> fila = 8;
-            case "13:30" -> fila = 9;
-            case "14:00" -> fila = 10;
-            case "14:30" -> fila = 11;
-            case "15:00" -> fila = 12;
-            case "15:30" -> fila = 13;
-            case "16:00" -> fila = 14;
-            case "16:30" -> fila = 15;
-            case "17:00" -> fila = 16;
+        switch (hora) {
+            case 9 -> fila = 0;
+            case 10 -> fila = 2;
+            case 11 -> fila = 4;
+            case 12 -> fila = 6;
+            case 13 -> fila = 8;
+            case 14 -> fila = 10;
+            case 15 -> fila = 12;
+            case 16 -> fila = 14;
+            case 17 -> fila = 16;
+        }
+        if(min==30&&hora!=17){
+            fila++;
         }
         return fila;
     }
