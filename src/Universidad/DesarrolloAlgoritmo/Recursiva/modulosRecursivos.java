@@ -27,12 +27,17 @@ public class modulosRecursivos {
         }
         return contador;
     }
-    public static int maxNumArray(int[] array, int i,int max){
-        if(i<array.length){ //Caso Base: En este caso el caso base es el elemento max que se ingresa como parametro en el main con el valor de [i]
-            if(array[i]>max){   //Si el numero en la posicion [i] es mayor que el valor de max del momento, se cambia max por el numero de [i]
+    public static int maxNumArray(int[] array, int i){
+        int max=array[i+1];
+        if(i==array.length-2){//Caso Base: llega al anteultimo elemento del array
+            if(array[i]>max){
                 max=array[i];
             }
-            max=maxNumArray(array,i+1,max); //Paso Recursivo se llama de nuevo el modulo cambiando por la siguiente posicion
+        }else{//Paso Recursivo:
+            max=maxNumArray(array,i+1);
+            if(array[i]>max){
+                max=array[i];
+            }
         }
         return max;
     }
@@ -69,15 +74,16 @@ public class modulosRecursivos {
         }
         return new String(array);
     }
-    public static int divisionRecursiva(int numerador, int denominador){
+    public static int[] divisionRecursiva(int numerador, int denominador){
         int resultado;
-        if(numerador-denominador<denominador){
-            resultado=numerador-denominador;
-        }else{
-            resultado=divisionRecursiva(numerador-denominador,denominador);
+        int resto=0;
+        if(numerador-denominador<0){    //Caso Base: el denominador es mayor al numerador
+            resto=numerador;
+            resultado = 1;
+        }else{  //Paso Recursivo: llama a la funcion restandole al numerador el denominador y suma uno al resultado
+            resultado=divisionRecursiva(numerador-denominador,denominador)[0]+1;
         }
-        resultado=(numerador-resultado)/denominador;
-        return resultado;
+        return new int[]{resultado,resto};
     }
     public static String caracteresAFrase(char caracter){
         Scanner sc = new Scanner(System.in);
@@ -89,6 +95,62 @@ public class modulosRecursivos {
             resultado += caracter+caracteresAFrase(sc.nextLine().charAt(0));
         }
         return resultado;
+    }
+    public static int[] sumaParEImp(int[] array, int i){
+        int sumaPar=0;
+        int sumaImpar=0;
+        int[] aux = new int[2];
+        if(i==array.length-1){  //Caso Base: se llega al ultimo elemento del array
+            if(i%2==0){
+                sumaPar=array[i];
+            }else{
+                sumaImpar=array[i];
+            }
+        }else{  //Paso Recursivo: se pregunta si es par o impar, y se suma en el acumulador respectivo, llama a la funcion con i+1
+            if(i%2==0){
+                aux=sumaParEImp(array,i+1);
+                sumaPar=array[i]+aux[0];
+                sumaImpar=aux[1];
+            }else{
+                aux=sumaParEImp(array,i+1);
+                sumaImpar=array[i]+aux[1];
+                sumaPar=aux[0];
+            }
+        }
+        return new int[]{sumaPar,sumaImpar};
+    }
+    public static boolean estaCaracterArray(char[] array,char carac, int i){
+        boolean verif=false;
+        if(i==array.length-1){
+            if(carac==array[i]){
+                verif=true;
+            }
+        }else{
+            if(carac==array[i]){
+                verif=true;
+            }else{
+                verif=estaCaracterArray(array,carac,i+1);
+            }
+        }
+        return verif;
+    }
+    public static int maxNumMatrix(int[][] matrix,int i){
+        int mayor;
+        int aux;
+        if(i==matrix[i].length-2){  //Caso Base: se llega al anteultimo elemento del array
+            aux=maxNumArray(matrix[i],0); //se utiliza la funcion de maxNumArray para calcular el mayor de cada fila
+            mayor=maxNumArray(matrix[matrix.length-1],0);
+            if(aux>mayor){  //se comparan los mayores de las filas
+                mayor=aux;
+            }
+        }else{
+            mayor=maxNumMatrix(matrix,i+1); //la recursiva de maxNumMatrix devuelve el mayor entre la ultima y anteultima fila
+            aux=maxNumArray(matrix[i],0);   //se calcula el mayor de la fila i
+            if(aux>mayor){  //se compara y guarda el mayor, luego se repite hasta llegar nuevamente a i = 0 o la primer fila
+                mayor=aux;
+            }
+        }
+        return mayor;
     }
 
 }
