@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class modulosRecursivos {
     public static void main(String[] args) {
+        String prueba = "aabao";
+        System.out.println(contarVocales(prueba));
     }
     public static boolean digitosIguales(int numero){
         boolean verificar;
@@ -29,11 +31,7 @@ public class modulosRecursivos {
     }
     public static int maxNumArray(int[] array, int i){
         int max=array[i+1];
-        if(i==array.length-2){//Caso Base: llega al anteultimo elemento del array
-            if(array[i]>max){
-                max=array[i];
-            }
-        }else{//Paso Recursivo:
+        if(i<array.length-2){
             max=maxNumArray(array,i+1);
             if(array[i]>max){
                 max=array[i];
@@ -51,6 +49,13 @@ public class modulosRecursivos {
         int suma=0; //Caso Base: El array ya se recorrio completo y la suma es igual a cero por ser el neutro de la suma
         if(j<array[0].length){
             suma=array[i][j]+sumaFila(array,i,j+1); //Paso Recursivo: mientras que j sea menor al largo de la fila, se suma el elemento [i][j] y se llama al modulo de nuevo
+        }
+        return suma;
+    }
+    public static int sumaCol(int[][] array, int i,int j){
+        int suma=0; //Caso Base: El array ya se recorrio completo y la suma es igual a cero por ser el neutro de la suma
+        if(i<array.length){
+            suma=array[i][j]+sumaCol(array,i+1,j); //Paso Recursivo: mientras quei sea menor al largo de la fila, se suma el elemento [i][j] y se llama al modulo de nuevo
         }
         return suma;
     }
@@ -137,20 +142,40 @@ public class modulosRecursivos {
     public static int maxNumMatrix(int[][] matrix,int i){
         int mayor;
         int aux;
+        //se compara y guarda el mayor, luego se repite hasta llegar nuevamente a i = 0 o la primer fila
         if(i==matrix[i].length-2){  //Caso Base: se llega al anteultimo elemento del array
             aux=maxNumArray(matrix[i],0); //se utiliza la funcion de maxNumArray para calcular el mayor de cada fila
             mayor=maxNumArray(matrix[matrix.length-1],0);
-            if(aux>mayor){  //se comparan los mayores de las filas
-                mayor=aux;
-            }
         }else{
             mayor=maxNumMatrix(matrix,i+1); //la recursiva de maxNumMatrix devuelve el mayor entre la ultima y anteultima fila
             aux=maxNumArray(matrix[i],0);   //se calcula el mayor de la fila i
-            if(aux>mayor){  //se compara y guarda el mayor, luego se repite hasta llegar nuevamente a i = 0 o la primer fila
-                mayor=aux;
-            }
+        }
+        if(aux>mayor){  //se comparan los mayores de las filas
+            mayor=aux;
         }
         return mayor;
     }
-
+    public static void mostrarSumColMat(int[][] matrix,int col){
+        if(col<matrix[0].length){
+            System.out.println(sumaCol(matrix,0,col));
+            mostrarSumColMat(matrix,col+1);
+        }
+    }
+    public static int contarVocales(String cadena){
+        int cantVocales=0;
+        String vocales = "aeiouAEIOU";
+        boolean contains = vocales.contains(cadena.charAt(cadena.length() - 1) + "");
+        if(cadena.length()==1){
+            if (contains){
+                cantVocales=1;
+            }
+        }else {
+            if (contains) {
+                cantVocales = 1 + contarVocales(cadena.substring(0, cadena.length() - 1));
+            }else{
+                cantVocales = contarVocales(cadena.substring(0, cadena.length() - 1));
+            }
+        }    
+        return cantVocales;
+    }
 }
