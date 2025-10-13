@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class modulosRecursivos {
     public static void main(String[] args) {
-        String prueba = "aabao";
-        System.out.println(contarVocales(prueba));
+        piramide(3);
     }
     public static boolean digitosIguales(int numero){
         boolean verificar;
@@ -177,5 +176,54 @@ public class modulosRecursivos {
             }
         }    
         return cantVocales;
+    }
+    public static void mediaPiramide(int numero){
+        if (numero < 1) {
+            throw new IllegalArgumentException("El numero no puede ser menor que 1");
+        }
+        if(numero==1){
+            System.out.println(1);
+        }else{
+            mediaPiramide(numero-1);
+            imprimirNum(numero); //Se puede usar un modulo auxiliar?
+            System.out.println();
+        }
+    }
+    public static void imprimirNum (int num){
+        if(num>0){
+            System.out.print(num);
+            imprimirNum(num-1);
+        }
+    }
+    public static void explotar(int num, int bomba){
+        if(num<=bomba){
+            System.out.print(num+" ");  //Caso Base: el numero es menor o igual a la bomba, se imprimer el numero más un espacio para separar
+        }else{                          //Si se usa la coma para separar se imprime en el ultimo numero: 1,2,3, por se decidio utilizar el espacio como separador
+            explotar(num/bomba,bomba);  //Se recorre primero la "rama" de la division
+            explotar(num-(num/bomba),bomba);    //Y luego se recorre la "rama" de la resta
+        }
+    }
+    public static void piramide(int num){
+        if(num>0){
+            imprimirEspacio(num);
+            piramide(num-1);
+            imprimirPiramide(num,1);
+            System.out.println();
+        }
+    }
+    public static void imprimirPiramide(int num, int aux){
+        if(aux<num){
+            System.out.print(aux);
+            imprimirPiramide(num,aux+1);
+            System.out.print(aux);
+        }else{
+            System.out.print(num);
+        }
+    }
+    public static void imprimirEspacio(int num){
+        if(num>0){
+            System.out.print(" ");
+            imprimirEspacio(num-1);
+        }
     }
 }
