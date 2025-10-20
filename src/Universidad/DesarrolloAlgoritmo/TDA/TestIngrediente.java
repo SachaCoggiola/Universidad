@@ -1,7 +1,7 @@
 package Universidad.DesarrolloAlgoritmo.TDA;
 import java.util.Scanner;
 
-public class testIngrediente {
+public class TestIngrediente {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Ingrediente harina = new Ingrediente("Harina","Gramos");

@@ -2,7 +2,7 @@ package Universidad.DesarrolloAlgoritmo.Recursiva;
 
 import java.util.Scanner;
 
-public class modulosRecursivos {
+public class ModulosRecursivos {
     public static void main(String[] args) {
         piramide(3);
     }
@@ -209,6 +209,12 @@ public class modulosRecursivos {
             piramide(num-1);
             imprimirPiramide(num,1);
             System.out.println();
+        }
+    }
+    public static void piramide2(int num,int aux){
+        if(aux<num){
+            //piramide2(aux-1);
+
         }
     }
     public static void imprimirPiramide(int num, int aux){

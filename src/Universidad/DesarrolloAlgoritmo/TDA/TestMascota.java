@@ -1,7 +1,7 @@
 package Universidad.DesarrolloAlgoritmo.TDA;
 import java.util.Scanner;
 
-public class testMascota {
+public class TestMascota {
     public static void main(String[] args) {
         Mascota perrito = new Mascota("Marley","perro");
         Scanner sc = new Scanner(System.in);

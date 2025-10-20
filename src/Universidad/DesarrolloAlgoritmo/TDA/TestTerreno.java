@@ -1,7 +1,7 @@
 package Universidad.DesarrolloAlgoritmo.TDA;
 import java.util.Scanner;
 
-public class testTerreno {
+public class TestTerreno {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Terreno miTerrenito = new Terreno(1,25,10,1);
