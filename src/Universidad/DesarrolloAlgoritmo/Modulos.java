@@ -82,6 +82,14 @@ public class Modulos {
             array[i] = sc.nextDouble();
         }
     }
+    public static void cargarMatriz(int[][] matriz, Scanner sc){
+        for(int i=0; i<matriz.length; i++){
+            for(int j=0; j<matriz[i].length; j++){
+                System.out.println("Ingrese el numero de la posicion ("+i+","+j+").");
+                matriz[i][j] = sc.nextInt();
+            }
+        }
+    }
     public static String generarCadena(String[] array){
         StringBuilder cadena = new StringBuilder();
         for (String s : array) {
