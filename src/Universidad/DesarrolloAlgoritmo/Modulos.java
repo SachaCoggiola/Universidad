@@ -206,4 +206,8 @@ public class Modulos {
             }
         }
     }
+    public static int[][] invertirMatrix(int[][] matrix){
+        int[][] invertida = new int[matrix.length][matrix[0].length];
+        return invertida;
+    }
 }
