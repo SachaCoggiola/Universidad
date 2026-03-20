@@ -1,10 +1,10 @@
-package Universidad.EstructuraDatos;
+package Universidad.EstructuraDatos.lineal.dinamico;
 
-public class Node {
+public class Nodo {
     private Object elemento;
-    private Node enlace;
+    private Nodo enlace;
 
-    public Node(Object elemento, Node enlace){
+    public Nodo(Object elemento, Nodo enlace){
         this.elemento = elemento;
         this.enlace = enlace;
     }
@@ -14,10 +14,10 @@ public class Node {
     public void setElemento(Object elemento){
         this.elemento = elemento;
     }
-    public Node getEnlace(){
-        return enlace;
+    public Nodo getEnlace(){
+        return this.enlace;
     }
-    public void setEnlace(Node enlace){
+    public void setEnlace(Nodo enlace){
         this.enlace = enlace;
     }
 }

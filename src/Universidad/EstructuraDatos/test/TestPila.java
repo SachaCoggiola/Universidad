@@ -1,25 +1,25 @@
-package Universidad.EstructuraDatos;
+package Universidad.EstructuraDatos.test;
+
+import Universidad.EstructuraDatos.lineal.dinamico.Pila;
 
 public class TestPila {
     public static void main(String[] args) {
         Pila primerPila = new Pila();
         System.out.println(primerPila.toString());
+
         System.out.println();
-        String elemento = "Lorem";
-        String elemento2 = "ipsum";
-        String elemento3 = "ungret";
-        String elemento4 = "malik";
-        String elemento5 = "epxileq";
+
+        String[] elemento = {"Lorem","ipsum","ungret","malik","epxileq"};
 
         Pila pilaApilar = new Pila();
-        if(pilaApilar.apilar(elemento)) {
+        if(apilar(elemento,pilaApilar,1)) {
             System.out.println(pilaApilar.toString());
         }
 
         System.out.println();
 
         Pila vaciarPila = new Pila();
-        if(vaciarPila.apilar(elemento)&&vaciarPila.apilar(elemento2)&&vaciarPila.apilar(elemento3)&&vaciarPila.apilar(elemento4)&&vaciarPila.apilar(elemento5)){
+        if(apilar(elemento,vaciarPila,5)){
             System.out.println(vaciarPila.toString());
         }
         vaciarPila.vaciar();
@@ -28,7 +28,7 @@ public class TestPila {
         System.out.println();
 
         Pila getTopePila = new Pila();
-        if(getTopePila.apilar(elemento)&&getTopePila.apilar(elemento2)&&getTopePila.apilar(elemento3)){
+        if(apilar(elemento,getTopePila,4)){
             System.out.println(getTopePila.toString());
             System.out.println(getTopePila.getTope());
             getTopePila.desapilar();
@@ -53,8 +53,8 @@ public class TestPila {
         System.out.println();
 
         Pila errorTope = new Pila();
-        if(errorTope.apilar(elemento)&&errorTope.apilar(elemento)&&errorTope.apilar(elemento)&&errorTope.apilar(elemento)&&errorTope.apilar(elemento)){
-            if(errorTope.apilar(elemento2)){
+        if(apilarElem(elemento[0],errorTope,5)){
+            if(errorTope.apilar(elemento[1])){
                 System.out.println("La pila no esta llena "+errorTope.getTope());
             }else{
                 System.out.println("La pila esta llena "+errorTope.getTope());
@@ -74,7 +74,7 @@ public class TestPila {
 
         Pila pilaOriginal = new Pila();
         Pila pilaClon;
-        if(pilaOriginal.apilar(elemento)&&pilaOriginal.apilar(elemento2)&&pilaOriginal.apilar(elemento3)&&pilaOriginal.apilar(elemento4)&&pilaOriginal.apilar(elemento5)){
+        if(apilar(elemento,pilaOriginal,5)){
             System.out.println(pilaOriginal.toString());
             pilaClon = pilaOriginal.clone();
             System.out.println(pilaClon.toString());
@@ -83,20 +83,23 @@ public class TestPila {
         }
 
         System.out.println();
-
-        Pila pilaOrigen = new Pila();
-        Pila pilaDest = new Pila();
-        Pila esIgual = new Pila();
-        if(pilaOrigen.apilar(elemento)&&pilaOrigen.apilar(elemento2)&&pilaOrigen.apilar(elemento3)&&pilaOrigen.apilar(elemento4)&&pilaOrigen.apilar(elemento5)){
-            System.out.println(pilaOrigen.toString());
-            if(esIgual.equals(pilaDest))
-                System.out.println("Las pilas estan vacias, y por lo tanto son iguales");
-            esIgual = pilaOrigen.clone();
-            System.out.println(esIgual.toString());
-            if(esIgual.equals(pilaOrigen))
-                System.out.println("Las pilas son clones, y por lo tanto son iguales");
-            if(!esIgual.equals(pilaDest))
-                System.out.println("La pila esIgual ya no esta vacia, y por lo tanto no es igual");
+    }
+    public static boolean apilar(String[] elemento, Pila pila, int cant){
+        int i = 0;
+        boolean apilado = true;
+        while(i < cant && apilado){
+            apilado = pila.apilar(elemento[i]);
+            i++;
         }
+        return apilado;
+    }
+    public static boolean apilarElem(String elemento, Pila pila, int cant){
+        int i = 0;
+        boolean apilado = true;
+        while(i < cant && apilado){
+            apilado = pila.apilar(elemento);
+            i++;
+        }
+        return apilado;
     }
 }

@@ -1,4 +1,4 @@
-package Universidad.EstructuraDatos;
+package Universidad.EstructuraDatos.lineal.estatico;
 
 public class Pila {
     private int tope;
@@ -63,22 +63,5 @@ public class Pila {
         }
         str.append("] tope: ").append(this.tope);
         return str.toString();
-    }
-    public boolean equals(Pila pila){
-        boolean sonIguales = false;
-        int i = 0;
-        if(this.tope == pila.tope && this.tope != -1){
-            sonIguales = true;
-            while(i <= this.tope && sonIguales){
-                if(!this.arr[i].equals(pila.arr[i])){
-                    sonIguales = false;
-                }
-                i++;
-            }
-        }else if(this.tope == pila.tope){
-            sonIguales = true;
-        }
-        return sonIguales;
-
     }
 }
