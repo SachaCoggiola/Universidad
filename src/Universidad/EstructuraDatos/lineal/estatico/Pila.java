@@ -27,14 +27,14 @@ public class Pila {
         }
         return seDescargo;
     }
-    public Object getTope(){
+    public Object obtenerTope(){
         Object elem = new Object();
         if(this.tope != -1){
             elem = this.arr[this.tope];
         }
         return elem;
     }
-    public boolean esVacio(){
+    public boolean esVacia(){
         return this.tope == -1;
     }
     public void vaciar(){

@@ -21,7 +21,7 @@ public class Cola {
     }
     public boolean sacar(){
         boolean res = false;
-        if(this.frente != tamanio){
+        if(this.frente != this.fin){
             this.arr[this.frente] = null;
             this.frente = (this.frente + 1) % tamanio;
             res = true;
@@ -29,10 +29,14 @@ public class Cola {
         return res;
     }
     public Object obtenerFrente(){
-        return this.arr[this.frente];
+        Object res = null;
+        if(this.frente != this.fin){
+            res = this.arr[this.frente];
+        }
+        return res;
     }
     public boolean esVacia(){
-        return this.fin == tamanio;
+        return this.fin == this.frente;
     }
     public void vaciar(){
         for(int i = 0; i < this.frente; i++){
@@ -41,7 +45,7 @@ public class Cola {
         this.frente = 0;
         this.fin = 0;
     }
-    public Cola clonar(){
+    public Cola clone(){
         Cola clon = new Cola();
         clon.fin = this.fin;
         clon.frente = this.frente;
@@ -51,13 +55,18 @@ public class Cola {
         return clon;
     }
     public String toString(){
-        return "["+stringRecursivo(this.arr,this.fin,this.frente)+"] Frente: "+this.arr[this.frente]+"; Fin: "+this.arr[this.fin];
-    }
-    private String stringRecursivo(Object[] arr, int fin, int fr){
-        String res = arr[fin].toString();
-        if(fin - 1 != fr){
-            res = arr[fin].toString() + ", " + stringRecursivo(arr,(fin-1+tamanio)%tamanio,fr);
+        StringBuilder res = new StringBuilder("[");
+        int i = this.frente;
+        if(this.frente != this.fin){
+            while(i!=this.fin){
+                res.append(this.arr[i].toString());
+                i = (i+1) % tamanio;
+                if(i != this.fin){
+                    res.append(",");
+                }
+            }
         }
-        return res;
+        res.append("]");
+        return res.toString();
     }
 }

@@ -5,7 +5,7 @@ public class Pila {
     public Pila() {
         top = null;
     }
-    public boolean esVacio() {
+    public boolean esVacia() {
         return top == null;
     }
     public boolean apilar(Object element) {
@@ -20,7 +20,7 @@ public class Pila {
         }
         return itPull;
     }
-    public Object getTope() {
+    public Object obtenerTope() {
         return this.top.getElemento();
     }
     public void vaciar(){

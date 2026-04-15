@@ -30,21 +30,21 @@ public class TestPila {
         Pila getTopePila = new Pila();
         if(apilar(elemento,getTopePila,4)){
             System.out.println(getTopePila.toString());
-            System.out.println(getTopePila.getTope());
+            System.out.println(getTopePila.obtenerTope());
             getTopePila.desapilar();
             System.out.println(getTopePila.toString());
-            System.out.println(getTopePila.getTope());
+            System.out.println(getTopePila.obtenerTope());
         }
 
         System.out.println();
 
         Pila pilaVacia = new Pila();
-        if(pilaVacia.esVacio()){
+        if(pilaVacia.esVacia()){
             System.out.println("La pila esta vacia");
         }
         System.out.println("Apilo un elemento");
         pilaVacia.apilar(elemento);
-        if(pilaVacia.esVacio()){
+        if(pilaVacia.esVacia()){
             System.out.println("La pila esta vacia");
         }else{
             System.out.println("La pila no esta vacia");
@@ -55,9 +55,9 @@ public class TestPila {
         Pila errorTope = new Pila();
         if(apilarElem(elemento[0],errorTope,5)){
             if(errorTope.apilar(elemento[1])){
-                System.out.println("La pila no esta llena "+errorTope.getTope());
+                System.out.println("La pila no esta llena "+errorTope.obtenerTope());
             }else{
-                System.out.println("La pila esta llena "+errorTope.getTope());
+                System.out.println("La pila esta llena "+errorTope.obtenerTope());
             }
         }
 
