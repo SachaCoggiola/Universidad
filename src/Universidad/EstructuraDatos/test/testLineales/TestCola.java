@@ -1,9 +1,8 @@
-package Universidad.EstructuraDatos.test;
+package Universidad.EstructuraDatos.test.testLineales;
 
 import Universidad.EstructuraDatos.lineal.dinamico.Cola;
 
 import java.util.Scanner;
-import java.util.Scanner.*;
 
 public class TestCola {
     public static void main(String[] args) {

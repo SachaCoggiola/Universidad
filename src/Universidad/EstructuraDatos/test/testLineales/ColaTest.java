@@ -1,4 +1,4 @@
-package Universidad.EstructuraDatos.test;
+package Universidad.EstructuraDatos.test.testLineales;
 import static org.junit.Assert.*;
 
 import java.util.regex.Matcher;

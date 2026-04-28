@@ -1,4 +1,4 @@
-package Universidad.EstructuraDatos.test;
+package Universidad.EstructuraDatos.test.testLineales;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
