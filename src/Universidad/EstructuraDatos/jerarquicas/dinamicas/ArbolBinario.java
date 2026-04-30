@@ -1,5 +1,6 @@
 package Universidad.EstructuraDatos.jerarquicas.dinamicas;
 
+import Universidad.EstructuraDatos.lineal.dinamico.Cola;
 import Universidad.EstructuraDatos.lineal.dinamico.Lista;
 
 public class ArbolBinario {
@@ -15,10 +16,10 @@ public class ArbolBinario {
         }else{
             aux = obtenerNodo(this.raiz,padre);
             if(aux != null){
-                if(pos == 'I' && aux.getHijoIzq()==null){
-                    aux.setHijoIzq(new NodoArbol(nuevo));
-                }else if(pos == 'D' && aux.getHijoDer()==null){
-                    aux.setHijoDer(new NodoArbol(nuevo));
+                if(pos == 'I' && aux.getIzquierdo()==null){
+                    aux.setIzquierdo(new NodoArbol(nuevo));
+                }else if(pos == 'D' && aux.getDerecho()==null){
+                    aux.setDerecho(new NodoArbol(nuevo));
                 }else{
                     respuesta = false;
                 }
@@ -33,10 +34,10 @@ public class ArbolBinario {
         NodoArbol aux = nodoPorPosicion(this.raiz, posPadre, pos);
         boolean respuesta = true;
         if(aux != null){
-            if(posHijo == 'I' && aux.getHijoIzq()==null){
-                aux.setHijoIzq(new NodoArbol(nuevo));
-            }else if(posHijo == 'D' && aux.getHijoDer()==null){
-                aux.setHijoDer(new NodoArbol(nuevo));
+            if(posHijo == 'I' && aux.getIzquierdo()==null){
+                aux.setIzquierdo(new NodoArbol(nuevo));
+            }else if(posHijo == 'D' && aux.getDerecho()==null){
+                aux.setDerecho(new NodoArbol(nuevo));
             }else{
                 respuesta = false;
             }
@@ -52,9 +53,9 @@ public class ArbolBinario {
             if (posPadre == pos[0]) {
                 aux = nodo;
             } else {
-                aux = nodoPorPosicion(nodo.getHijoIzq(), posPadre, pos);
+                aux = nodoPorPosicion(nodo.getIzquierdo(), posPadre, pos);
                 if(aux == null){
-                    aux = nodoPorPosicion(nodo.getHijoDer(), posPadre, pos);
+                    aux = nodoPorPosicion(nodo.getDerecho(), posPadre, pos);
                 }
             }
         }
@@ -70,8 +71,8 @@ public class ArbolBinario {
         int largo = -1;
         int largoIzq, largoDer;
         if(nodo != null){
-            largoIzq = calcAltura(nodo.getHijoIzq())+1;
-            largoDer = calcAltura(nodo.getHijoDer())+1;
+            largoIzq = calcAltura(nodo.getIzquierdo())+1;
+            largoDer = calcAltura(nodo.getDerecho())+1;
             largo=max(largoIzq,largoDer);
         }
         return largo;
@@ -85,12 +86,12 @@ public class ArbolBinario {
     private int calcNivel(NodoArbol nodo, Object elem){
         int largo = -1;
         if(nodo != null){
-            if(nodo.getElem().equals(elem)){
+            if(nodo.getElemento().equals(elem)){
                 largo++;
             }else{
-                largo = calcNivel(nodo.getHijoIzq(), elem);
+                largo = calcNivel(nodo.getIzquierdo(), elem);
                 if(largo == -1){
-                    largo = calcNivel(nodo.getHijoDer(), elem);
+                    largo = calcNivel(nodo.getDerecho(), elem);
                 }
                 if(largo != -1){
                     largo++;
@@ -100,59 +101,111 @@ public class ArbolBinario {
         return largo;
     }
     public Object padre(Object elem){
-        return buscPadre(this.raiz, elem);
+        Object aux = null;
+        NodoArbol padre = buscarPadre(this.raiz, elem);
+        if(padre != null){
+            aux = padre.getElemento();
+        }
+        return aux;
     }
-    private Object buscPadre(NodoArbol nodo, Object elem){
-        Object res = null;
+    private NodoArbol buscarPadre(NodoArbol nodo, Object elemHijo){
+        NodoArbol padre = null;
         if(nodo != null){
-            if(nodo.getElem().equals(elem)){
-                res = nodo.getElem();
+            if(nodo.getElemento().equals(elemHijo)){
+                padre = nodo;
             }else{
-                res = buscPadre(nodo.getHijoIzq(), elem);
-                if(res == null){
-                    buscPadre(nodo.getHijoDer(), elem);
+                padre = buscarPadre(nodo.getIzquierdo(), elemHijo);
+                if(padre == null){
+                    padre = buscarPadre(nodo.getDerecho(), elemHijo);
                 }
-                if(res == elem){
-                    res = nodo.getElem();
+                if(padre.getElemento() == elemHijo){
+                    padre = nodo;
                 }
             }
         }
-        return res;
+        return padre;
     }
     public Lista listarPreorden(){
         Lista lista = new Lista();
-        listaEnPreorden(lista, this.raiz, 1);
+        listaEnPreorden(lista, this.raiz);
         return lista;
     }
-    private int listaEnPreorden(Lista lista, NodoArbol nodo, int pos){
+    private void listaEnPreorden(Lista lista, NodoArbol nodo){
         if(nodo != null){
-            lista.insertar(nodo.getElem(), pos);
-            pos = listaEnPreorden(lista, nodo.getHijoIzq(), pos+1);
-            pos = listaEnPreorden(lista, nodo.getHijoDer(), pos+1);
+            lista.insertar(nodo.getElemento(), lista.longitud());
+            listaEnPreorden(lista, nodo.getIzquierdo());
+            listaEnPreorden(lista, nodo.getDerecho());
         }
-        return pos;
     }
     public Lista listarInorden(){
         Lista lista = new Lista();
-        listaEnInorden(lista, this.raiz, 0);
+        listaEnInorden(lista, this.raiz);
         return lista;
     }
-    private void listaEnInorden(Lista lista, NodoArbol nodo, int pos){
+    private void listaEnInorden(Lista lista, NodoArbol nodo){
         if(nodo != null){
-            listaEnInorden(lista, nodo.getHijoIzq(), pos);
-            listaEnInorden(lista, nodo.getHijoDer(), pos);
-            lista.insertar(nodo.getElem(),pos);
+            listaEnInorden(lista, nodo.getIzquierdo());
+            lista.insertar(nodo.getElemento(),lista.longitud()+1);
+            listaEnInorden(lista, nodo.getDerecho());
         }
+    }
+    public Lista listarPosorden(){
+        Lista lista = new Lista();
+        listaEnPosorden(lista,this.raiz);
+        return lista;
+    }
+    private void listaEnPosorden(Lista lista, NodoArbol nodo){
+        if(nodo != null){
+            listaEnPosorden(lista, nodo.getIzquierdo());
+            listaEnPosorden(lista, nodo.getDerecho());
+            lista.insertar(nodo.getElemento(),lista.longitud()+1);
+        }
+    }
+    public Lista listarNiveles(){
+        Lista lista = new Lista();
+        Cola cola = new Cola();
+        if(this.raiz != null){
+            cola.poner(this.raiz);
+            while(!cola.esVacia()){
+                NodoArbol nodo = (NodoArbol) cola.obtenerFrente();
+                cola.sacar();
+                lista.insertar(nodo.getElemento(), lista.longitud()+1);
+                if(nodo.getIzquierdo() != null){
+                    cola.poner(nodo.getIzquierdo());
+                }
+                if(nodo.getDerecho() != null){
+                    cola.poner(nodo.getDerecho());
+                }
+            }
+        }
+        return lista;
+    }
+    public ArbolBinario clone(){
+        ArbolBinario copia = new ArbolBinario();
+        copia.raiz = copiarArbol(this.raiz);
+        return copia;
+    }
+    private NodoArbol copiarArbol(NodoArbol nodo){
+        NodoArbol copia = null;
+        if(nodo != null){
+            copia = new NodoArbol(nodo.getElemento());
+            copia.setIzquierdo(copiarArbol(nodo.getIzquierdo()));
+            copia.setDerecho(copiarArbol(nodo.getDerecho()));
+        }
+        return copia;
+    }
+    public void vaciar(){
+        this.raiz = null;
     }
     private NodoArbol obtenerNodo(NodoArbol nodo, Object elemBuscado){
         NodoArbol res = null;
         if(nodo != null){
-            if(nodo.getElem().equals(elemBuscado)){
+            if(nodo.getElemento().equals(elemBuscado)){
                 res = nodo;
             }else{
-                res = obtenerNodo(nodo.getHijoIzq(), elemBuscado);
+                res = obtenerNodo(nodo.getIzquierdo(), elemBuscado);
                 if(res == null){
-                    res = obtenerNodo(nodo.getHijoDer(), elemBuscado);
+                    res = obtenerNodo(nodo.getDerecho(), elemBuscado);
                 }
             }
         }

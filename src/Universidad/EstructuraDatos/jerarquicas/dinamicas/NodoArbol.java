@@ -2,34 +2,34 @@ package Universidad.EstructuraDatos.jerarquicas.dinamicas;
 
 public class NodoArbol {
     private Object elem;
-    private NodoArbol hijoIzq;
-    private NodoArbol hijoDer;
+    private NodoArbol izquierdo;
+    private NodoArbol derecho;
     public NodoArbol(Object elem) {
         this.elem = elem;
-        this.hijoIzq = null;
-        this.hijoDer = null;
+        this.izquierdo = null;
+        this.derecho = null;
     }
     public NodoArbol(Object elem, NodoArbol hijoIzq, NodoArbol hijoDer) {
         this.elem = elem;
-        this.hijoIzq = hijoIzq;
-        this.hijoDer = hijoDer;
+        this.izquierdo = hijoIzq;
+        this.derecho = hijoDer;
     }
-    public Object getElem() {
+    public Object getElemento() {
         return elem;
     }
-    public void setElem(Object elem) {
+    public void setElemento(Object elem) {
         this.elem = elem;
     }
-    public NodoArbol getHijoIzq() {
-        return hijoIzq;
+    public NodoArbol getIzquierdo() {
+        return izquierdo;
     }
-    public void setHijoIzq(NodoArbol hijoIzq) {
-        this.hijoIzq = hijoIzq;
+    public void setIzquierdo(NodoArbol hijoIzq) {
+        this.izquierdo = hijoIzq;
     }
-    public NodoArbol getHijoDer() {
-        return hijoDer;
+    public NodoArbol getDerecho() {
+        return derecho;
     }
-    public void setHijoDer(NodoArbol hijoDer) {
-        this.hijoDer = hijoDer;
+    public void setDerecho(NodoArbol hijoDer) {
+        this.derecho = hijoDer;
     }
 }
