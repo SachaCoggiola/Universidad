@@ -211,4 +211,53 @@ public class ArbolBinario {
         }
         return res;
     }
+    public Lista frontera(){
+        Lista lista = new Lista();
+        listarFrontera(lista,this.raiz);
+        return lista;
+    }
+    private void listarFrontera(Lista lista, NodoArbol nodo){
+        if(nodo != null){
+            if(nodo.getIzquierdo() == null && nodo.getDerecho() == null){
+                lista.insertar(nodo.getElemento(), lista.longitud()+1);
+            }else {
+                listarFrontera(lista, nodo.getIzquierdo());
+                listarFrontera(lista, nodo.getDerecho());
+            }
+        }
+    }
+    public Lista obtenerAncestros(Object elem){
+        Lista lista = new Lista();
+        boolean[] flag = {false};
+        ancestros(lista, elem, this.raiz, flag);
+        return lista;
+    }
+    private void ancestros(Lista lista, Object buscado, NodoArbol nodo, boolean[] flag){
+        if(nodo != null){
+            if(nodo.getElemento().equals(buscado)){
+                flag[0] = true;
+            }else {
+                ancestros(lista, buscado, nodo.getIzquierdo(), flag);
+                if(!flag[0]){
+                    ancestros(lista, buscado, nodo.getDerecho(), flag);
+                }
+                if(flag[0]){
+                    lista.insertar(nodo.getElemento(), lista.longitud()+1);
+                }
+            }
+        }
+    }
+    public Lista obtenerDescendientes(Object elem){
+        Lista lista = new Lista();
+        descendientes(lista, obtenerNodo(this.raiz,elem));
+        lista.eliminar(1);
+        return lista;
+    }
+    private void descendientes(Lista lista, NodoArbol nodo){
+        if(nodo != null){
+            lista.insertar(nodo.getElemento(), lista.longitud()+1);
+            descendientes(lista, nodo.getIzquierdo());
+            descendientes(lista, nodo.getDerecho());
+        }
+    }
 }

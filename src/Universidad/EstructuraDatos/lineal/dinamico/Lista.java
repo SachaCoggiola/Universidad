@@ -5,8 +5,8 @@ public class Lista {
     private int longitud;
 
     public Lista(){
-        cabecera = null;
-        longitud = -1;
+        this.cabecera = null;
+        this.longitud = 0;
     }
     public boolean insertar(Object elem, int pos){
         Nodo aux;
@@ -19,7 +19,7 @@ public class Lista {
                 this.cabecera = nuevo;
             }else{
                 aux = this.cabecera;
-                while(i <= pos - 1){
+                while(i < pos - 1){
                     aux = aux.getEnlace();
                     i++;
                 }
@@ -27,6 +27,7 @@ public class Lista {
                 aux.setEnlace(nuevo);
             }
             bandera = true;
+            this.longitud++;
         }
         return bandera;
     }
@@ -108,11 +109,16 @@ public class Lista {
     public String toString(){
         StringBuilder ret = new StringBuilder("[");
         Nodo aux = this.cabecera;
-        for(int i = 1; i < this.longitud; i++){
-            ret.append(aux.getElemento()).append(",");
-            aux = aux.getEnlace();
+        if(aux != null){
+            while(aux != null){
+                ret.append(aux.getElemento());
+                if(aux.getEnlace() != null){
+                    ret.append(", ");
+                }
+                aux = aux.getEnlace();
+            }
         }
-        ret.append(aux.getElemento()).append("]");
+        ret.append("]");
         return ret.toString();
     }
 }
