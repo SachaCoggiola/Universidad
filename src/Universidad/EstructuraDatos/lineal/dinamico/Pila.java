@@ -15,7 +15,7 @@ public class Pila {
     public boolean desapilar(){
         boolean itPull = false;
         if(this.top != null){
-            this.top = top.getEnlace(); //Es necesario igualar el nodo que se desapila a null?
+            this.top = top.getEnlace();
             itPull = true;
         }
         return itPull;

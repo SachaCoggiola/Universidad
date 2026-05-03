@@ -2,6 +2,7 @@ package Universidad.EstructuraDatos.jerarquicas.dinamicas;
 
 import Universidad.EstructuraDatos.lineal.dinamico.Cola;
 import Universidad.EstructuraDatos.lineal.dinamico.Lista;
+import Universidad.EstructuraDatos.lineal.dinamico.Nodo;
 
 public class ArbolBinario {
     private NodoArbol raiz;
@@ -132,7 +133,7 @@ public class ArbolBinario {
     }
     private void listaEnPreorden(Lista lista, NodoArbol nodo){
         if(nodo != null){
-            lista.insertar(nodo.getElemento(), lista.longitud());
+            lista.insertar(nodo.getElemento(), lista.longitud()+1);
             listaEnPreorden(lista, nodo.getIzquierdo());
             listaEnPreorden(lista, nodo.getDerecho());
         }
@@ -259,5 +260,29 @@ public class ArbolBinario {
             descendientes(lista, nodo.getIzquierdo());
             descendientes(lista, nodo.getDerecho());
         }
+    }
+    public boolean verificarPatron(Lista patron){
+        return verifPatron(patron.clone(), this.raiz);
+    }
+    private boolean verifPatron(Lista patron, NodoArbol nodo){
+        boolean flag = false;
+        Object aux;
+        if(nodo != null && !patron.esVacio()){
+                aux = patron.recuperar(1);
+            if(nodo.getElemento().equals(aux)){
+                patron.eliminar(1);
+                flag = verifPatron(patron,nodo.getIzquierdo());
+                if(!flag){
+                    flag = verifPatron(patron,nodo.getDerecho());
+                }
+            }
+            if(patron.esVacio()&&!flag){
+                flag = nodo.getIzquierdo()==null&&nodo.getDerecho()==null;
+            }
+            if(!flag){
+                patron.insertar(aux, 1);
+            }
+        }
+        return flag;
     }
 }

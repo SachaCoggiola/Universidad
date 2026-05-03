@@ -1,15 +1,37 @@
 package Universidad.EstructuraDatos.test.testJerarquicas;
 
 import Universidad.EstructuraDatos.jerarquicas.dinamicas.ArbolBinario;
+import Universidad.EstructuraDatos.lineal.dinamico.Lista;
+
 import java.util.Scanner;
 
 public class TestArbol {
     public static void main(String[] args) {
         ArbolBinario arbol = new ArbolBinario();
+        Lista lista = new Lista();
+        cargarLista(lista);
         cargarVarios(arbol);
-        System.out.println(arbol.frontera().toString());
+        System.out.println(lista.toString());
+        System.out.println(arbol.listarPreorden().toString());
+        /*System.out.println(arbol.frontera().toString());
         System.out.println(arbol.obtenerAncestros('E').toString());
         System.out.println(arbol.obtenerDescendientes('B').toString());
+        */
+        if(arbol.verificarPatron(lista)){
+            System.out.println("Patron encontrado");
+        }else {
+            System.out.println("Patron no encontrado");
+        }
+    }
+    public static void cargarLista(Lista lista) {
+        Scanner sc = new Scanner(System.in);
+        int i = 1;
+        do {
+            System.out.println("Ingrese el elemento N°" + i);
+            lista.insertar(sc.nextLine().charAt(0), i);
+            i++;
+            System.out.println("Desea ingresar otro elemento?. Ingrese si o no");
+        }while(sc.nextLine().equals("si"));
     }
     public static void cargarVarios(ArbolBinario arbol) {
         Scanner sc = new Scanner(System.in);

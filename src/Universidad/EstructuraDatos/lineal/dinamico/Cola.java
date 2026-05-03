@@ -8,18 +8,15 @@ public class Cola {
         this.fin = null;
     }
     public boolean poner(Object elem){
-        boolean bandera = false;
         if(this.frente == null){
             this.frente = new Nodo(elem,null);
             this.fin = this.frente;
-            bandera = true;
         }else{
             Nodo aux = new Nodo(elem,null);
             this.fin.setEnlace(aux);
             this.fin = aux;
-            bandera = true;
         }
-        return bandera;
+        return true;
     }
     public boolean sacar(){
         boolean bandera = false;

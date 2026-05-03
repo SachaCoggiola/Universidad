@@ -46,6 +46,7 @@ public class Lista {
                 }
                 aux.setEnlace(aux.getEnlace().getEnlace());
             }
+            this.longitud--;
             bandera = true;
         }
         return bandera;
@@ -84,10 +85,10 @@ public class Lista {
     }
     public void vaciar(){
         this.cabecera = null;
-        this.longitud = -1;
+        this.longitud = 0;
     }
     public boolean esVacio(){
-        return this.cabecera == null && this.longitud == -1;
+        return this.cabecera == null && this.longitud == 0;
     }
     public Lista clone(){
         Lista clone = new Lista();
@@ -120,5 +121,47 @@ public class Lista {
         }
         ret.append("]");
         return ret.toString();
+    }
+    public Lista obtenerMutiplo(int num){
+        Lista nueva = new Lista();
+        Nodo aux = this.cabecera;
+        Nodo multiplo = null;
+        int i = 1;
+        if(aux != null){
+            if(num==1){
+                nueva = this.clone();
+            }
+            while(aux!=null){
+                if(i%num == 0 && nueva.cabecera == null){
+                    nueva.cabecera = new Nodo(aux.getElemento(),null);
+                    multiplo = nueva.cabecera;
+                } else if (i%num == 0 && multiplo != null) {
+                    multiplo.setEnlace(new Nodo(aux.getElemento(),null));
+                    multiplo = multiplo.getEnlace();
+                }
+                aux = aux.getEnlace();
+                i++;
+            }
+        }
+        return nueva;
+    }
+    public void eliminarApariciones(Object elem){
+        eliminarAparicionesAux(this.cabecera, elem);
+    }
+    private void eliminarAparicionesAux(Nodo nodo, Object elem){
+        Nodo aux;
+        while(nodo != null){
+            aux = nodo.getEnlace();
+            if(nodo==this.cabecera&&nodo.getElemento().equals(elem)){
+                this.cabecera = nodo.getEnlace();
+            }else {
+                if (aux != null) {
+                    if (aux.getElemento().equals(elem)) {
+                        nodo.setEnlace(aux.getEnlace());
+                    }
+                }
+            }
+            nodo = nodo.getEnlace();
+        }
     }
 }
