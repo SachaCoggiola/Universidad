@@ -119,7 +119,7 @@ public class ArbolBinario {
                 if(padre == null){
                     padre = buscarPadre(nodo.getDerecho(), elemHijo);
                 }
-                if(padre.getElemento() == elemHijo){
+                if(padre!=null&&padre.getElemento() == elemHijo){
                     padre = nodo;
                 }
             }
@@ -284,5 +284,28 @@ public class ArbolBinario {
             }
         }
         return flag;
+    }
+    public ArbolBinario clonarInvertido(){
+        ArbolBinario clon = new ArbolBinario();
+        if(this.raiz != null){
+            clon.raiz = new NodoArbol(this.raiz.getElemento());
+            cloneInvertido(clon.raiz,this.raiz);
+        }
+        return clon;
+    }
+    private void cloneInvertido(NodoArbol clon, NodoArbol nodo){
+        NodoArbol aux;
+        if(nodo != null){
+            aux = nodo.getIzquierdo();
+            if(aux!=null){
+                clon.setDerecho(new NodoArbol(aux.getElemento()));
+                cloneInvertido(clon.getDerecho(),aux);
+            }
+            aux = nodo.getDerecho();
+            if(aux != null){
+                clon.setIzquierdo(new NodoArbol(aux.getElemento()));
+                cloneInvertido(clon.getIzquierdo(),aux);
+            }
+        }
     }
 }

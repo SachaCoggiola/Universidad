@@ -8,20 +8,22 @@ import java.util.Scanner;
 public class TestArbol {
     public static void main(String[] args) {
         ArbolBinario arbol = new ArbolBinario();
+        cargarVarios(arbol);
+        System.out.println(arbol.frontera().toString());
+        /*
         Lista lista = new Lista();
         cargarLista(lista);
-        cargarVarios(arbol);
         System.out.println(lista.toString());
         System.out.println(arbol.listarPreorden().toString());
-        /*System.out.println(arbol.frontera().toString());
         System.out.println(arbol.obtenerAncestros('E').toString());
         System.out.println(arbol.obtenerDescendientes('B').toString());
-        */
         if(arbol.verificarPatron(lista)){
             System.out.println("Patron encontrado");
         }else {
             System.out.println("Patron no encontrado");
         }
+        */
+        System.out.println(arbol.clonarInvertido().listarPreorden().toString());
     }
     public static void cargarLista(Lista lista) {
         Scanner sc = new Scanner(System.in);
