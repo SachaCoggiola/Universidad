@@ -39,8 +39,9 @@ public class Cola {
         return this.fin == this.frente;
     }
     public void vaciar(){
-        for(int i = 0; i < this.frente; i++){
-            this.arr[i] = null;
+        while(this.frente != this.fin){
+            this.arr[this.frente] = null;
+            this.frente = (this.frente + 1) % tamanio;
         }
         this.frente = 0;
         this.fin = 0;

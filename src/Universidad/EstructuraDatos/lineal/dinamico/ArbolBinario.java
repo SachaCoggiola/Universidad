@@ -1,8 +1,4 @@
-package Universidad.EstructuraDatos.jerarquicas.dinamicas;
-
-import Universidad.EstructuraDatos.lineal.dinamico.Cola;
-import Universidad.EstructuraDatos.lineal.dinamico.Lista;
-import Universidad.EstructuraDatos.lineal.dinamico.Nodo;
+package Universidad.EstructuraDatos.lineal.dinamico;
 
 public class ArbolBinario {
     private NodoArbol raiz;

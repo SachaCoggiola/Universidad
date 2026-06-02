@@ -1,11 +1,11 @@
-package Universidad.EstructuraDatos.test.testJerarquicas;
+package Universidad.EstructuraDatos.test.testLineales;
 
-import Universidad.EstructuraDatos.jerarquicas.dinamicas.ArbolBinario;
+import Universidad.EstructuraDatos.lineal.dinamico.ArbolBinario;
 import Universidad.EstructuraDatos.lineal.dinamico.Lista;
 
 import java.util.Scanner;
 
-public class TestArbol {
+public class TestArbolBin {
     public static void main(String[] args) {
         ArbolBinario arbol = new ArbolBinario();
         cargarVarios(arbol);

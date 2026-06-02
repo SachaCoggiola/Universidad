@@ -1,4 +1,4 @@
-package Universidad.EstructuraDatos.jerarquicas.dinamicas;
+package Universidad.EstructuraDatos.lineal.dinamico;
 
 public class NodoArbol {
     private Object elem;
