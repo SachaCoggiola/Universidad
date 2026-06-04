@@ -179,12 +179,23 @@ public class ArbolGen {
     public Lista listarInorden(){
         Lista lista = new Lista();
         Pila pilaRaiz = new Pila();
-        listarEnInorden(this.raiz,pilaRaiz,1,lista);
+        listarEnInorden(this.raiz,pilaRaiz,lista,false);
         return lista;
     }
-    private void listarEnInorden(NodoGen nodo,Pila pilaRaiz, int largo,Lista lista) {
-        NodoGen aux;
+    private void listarEnInorden(NodoGen nodo,Pila pilaRaiz,Lista lista, boolean hijoIzq) {
         if(nodo!=null){
+            listarEnInorden(nodo.getHermanoDerecho(),pilaRaiz,lista,false);
+            if(hijoIzq){
+                lista.insertar(((NodoGen) pilaRaiz.obtenerTope()).getElem(),1);
+                pilaRaiz.desapilar();
+            }
+            pilaRaiz.apilar(nodo);
+            listarEnInorden(nodo.getHijoIzquierdo(),pilaRaiz,lista,true);
+        }else{
+            if(hijoIzq){
+                lista.insertar(((NodoGen) pilaRaiz.obtenerTope()).getElem(),1);
+                pilaRaiz.desapilar();
+            }
         }
     }
     public Lista listarPosorden(){

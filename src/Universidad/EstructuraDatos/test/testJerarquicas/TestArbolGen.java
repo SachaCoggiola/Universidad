@@ -12,6 +12,7 @@ public class TestArbolGen {
         System.out.println(arbol.altura());
         System.out.println(arbol.nivel(5));
         System.out.println(arbol.ancestros(5).toString());
+        System.out.println(arbol.listarInorden().toString());
     }
     public static void cargarArbol(ArbolGen arbol) {
         Scanner sc = new Scanner(System.in);
