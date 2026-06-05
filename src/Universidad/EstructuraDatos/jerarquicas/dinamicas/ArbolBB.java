@@ -239,4 +239,16 @@ public class ArbolBB {
         }
         return res;
     }
+    public void eliminarMinimo(){
+        NodoABB nodo = this.raiz;
+        NodoABB hijo;
+        if(nodo!=null){
+            hijo = nodo.getIzquierdo();
+            while(hijo.getIzquierdo()!=null){
+                nodo = nodo.getIzquierdo();
+                hijo = hijo.getIzquierdo();
+            }
+            nodo.setIzquierdo(null);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package Universidad.EstructuraDatos.jerarquicas.dinamicas;
 
+import Universidad.EstructuraDatos.lineal.dinamico.Cola;
 import Universidad.EstructuraDatos.lineal.dinamico.Lista;
 import Universidad.EstructuraDatos.lineal.dinamico.Pila;
 
@@ -209,6 +210,80 @@ public class ArbolGen {
             lista.insertar(nodo.getElem(),largo);
             listarEnPosorden(nodo.getHermanoDerecho(),largo+1,lista);
         }
+    }
+    public Lista listarEntreNiveles(int niv1, int niv2){
+        Lista lista = new Lista();
+        Cola cola = new Cola();
+        int longitud = 0;
+        int nivelActual = 0;
+        int cantCabeceras = 1;
+        int i=0;
+        NodoGen aux;
+        if(this.raiz!=null){
+            cola.poner(this.raiz);
+            while(!cola.esVacia()){
+                NodoGen nodo = (NodoGen) cola.obtenerFrente();
+                cola.sacar();
+                cantCabeceras--;
+                while(nodo!=null && nivelActual<=niv2){
+                    if(nivelActual>=niv1){
+                        longitud++;
+                        lista.insertar(nodo.getElem(),longitud);
+                    }
+                    aux = nodo.getHijoIzquierdo();
+                    if(aux!=null&&nivelActual<niv2){
+                        cola.poner(aux);
+                        i++;
+                    }
+                    nodo = nodo.getHermanoDerecho();
+                }
+                if(cantCabeceras==0){
+                    nivelActual++;
+                    cantCabeceras = i;
+                    i = 0;
+                }
+            }
+        }
+        return lista;
+    }
+    public boolean eliminar(Object elem){
+        boolean eliminado = false;
+        if(this.raiz!=null){
+            if(this.raiz.getElem().equals(elem)){
+                this.raiz = null;
+                eliminado = true;
+            }else{
+                eliminado = eliminarAux(elem, this.raiz);
+            }
+
+        }
+        return eliminado;
+    }
+    private boolean eliminarAux(Object elem, NodoGen nodo){
+        boolean eliminado = false;
+        NodoGen hermano;
+        NodoGen hijo;
+        if(nodo!=null){
+            hijo = nodo.getHijoIzquierdo();
+            if(hijo!=null){
+                if(hijo.getElem().equals(elem)){
+                    nodo.setHijoIzquierdo(hijo.getHermanoDerecho());
+                    eliminado = true;
+                }else{
+                    eliminarAux(elem,hijo);
+                }
+            }
+            hermano = nodo.getHermanoDerecho();
+            if(hermano!=null){
+                if(elem.equals(hermano.getElem())){
+                    nodo.setHermanoDerecho(hermano.getHermanoDerecho());
+                    eliminado = true;
+                }else{
+                    eliminarAux(elem,hermano);
+                }
+            }
+        }
+        return eliminado;
     }
     public ArbolGen clone(){
         ArbolGen res = new ArbolGen();

@@ -9,10 +9,7 @@ public class TestArbolGen {
         ArbolGen arbol = new ArbolGen();
         cargarArbol(arbol);
         System.out.println(arbol.toString());
-        System.out.println(arbol.altura());
-        System.out.println(arbol.nivel(5));
-        System.out.println(arbol.ancestros(5).toString());
-        System.out.println(arbol.listarInorden().toString());
+        System.out.println(arbol.listarEntreNiveles(1,1).toString());
     }
     public static void cargarArbol(ArbolGen arbol) {
         Scanner sc = new Scanner(System.in);
