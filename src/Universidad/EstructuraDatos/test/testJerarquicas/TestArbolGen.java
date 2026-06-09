@@ -25,6 +25,8 @@ public class TestArbolGen {
             sc.nextLine();
             System.out.println("Desea seguir insertando elementos?. Responda y o n");
             flag = sc.nextLine().equals("y");
+            System.out.println("hola");
         }
     }
+
 }
